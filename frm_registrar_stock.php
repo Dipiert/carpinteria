@@ -11,7 +11,7 @@
     <title>Registrar nuevo Stock</title>
 </head>
 <body>
-<form action="registrar_stock.php" method="post" onsubmit="return sonCamposValidos()">
+<form action="registrar_stock.php" method="post" onsubmit="const validador = new Validador(9999); return validador.sonCamposValidos();">
     <div class="campo">
         <label>Ancho (cm):</label>
         <input type="text" id="in_ancho" name="ancho" size="1" maxlength="5">
@@ -23,7 +23,7 @@
     <div class="campo">
 
         <label>Tipo:</label>
-        <select>
+        <select name="tipo">
             <option>Otro...</option>
         </select>    
     </div>

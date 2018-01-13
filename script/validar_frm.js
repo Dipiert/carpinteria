@@ -1,51 +1,54 @@
 /* eslint-env browser */
 
-const maximo = 99999;
-
-function alertCaracteresInvalidos(campo) {
-  alert(`${campo} contiene caracteres inválidos`);
+function Validador(maximaMedida) {
+  this.maximo = maximaMedida;
 }
 
-function alertEsVacio(campo) {
-  alert(`El valor de ${campo} no puede estar vacío`);
-}
+const validador = new Validador(9999);
 
-function alertMayorAlPermitido(campo) {
-  alert(`El valor de ${campo} no puede ser mayor a ${maximo}`);
-}
+Validador.prototype.alertEsVacio = function (campo) {
+  return (`El valor de ${campo} no puede estar vacío`);
+};
 
-function esVacio(campo) {
+Validador.prototype.alertCaracteresInvalidos = function (campo) {
+  return (`${campo} contiene caracteres inválidos`);
+};
+
+Validador.prototype.alertMayorAlPermitido = function (campo) {
+  return (`El valor de ${campo} no puede ser mayor a ${this.maximo}`);
+};
+
+Validador.prototype.esVacio = function (campo) {
   return campo === null || campo.length === 0;
-}
+};
 
-function mayorAlPermitido(campo) {
-  return campo > maximo;
-}
+Validador.prototype.mayorAlPermitido = function (campo) {
+  return campo > this.maximo;
+};
 
-function contieneNoNumeros(campo) {
+Validador.prototype.contieneNoNumeros = function (campo) {
   return /[^0-9]/.test(campo);
-}
+};
 
-function sonCamposValidos() {
-  const map = new Map([
-                       ['Ancho', window.document.getElementById('in_ancho').value],
-                       ['Alto', window.document.getElementById('in_alto').value],
-  ]);
+Validador.prototype.sonCamposValidos = function () {
   let sonValidos = true;
-  function alertCamposInvalidos(value, key) {
-    if (esVacio(value)) {
-      alertEsVacio(key);
+  const map = new Map([
+     ['Ancho', window.document.getElementById('in_ancho').value],
+     ['Alto', window.document.getElementById('in_alto').value],
+  ]);
+  map.forEach((value, key) => {
+    if (this.esVacio(value)) {
+      alert(this.alertEsVacio(key));
       sonValidos = false;
-    } else if (contieneNoNumeros(value)) {
-      alertCaracteresInvalidos(key);
+    } else if (this.contieneNoNumeros(value)) {
+      alert(this.alertCaracteresInvalidos(key));
       sonValidos = false;
-    } else if (mayorAlPermitido(value, maximo)) {
-      alertMayorAlPermitido(key, maximo);
+    } else if (this.mayorAlPermitido(value, validador.maximo)) {
+      alert(this.alertMayorAlPermitido(key, this.maximo));
       sonValidos = false;
     }
-  }
-  map.forEach(alertCamposInvalidos);
+  });
   return sonValidos;
-}
+};
 
-module.exports = sonCamposValidos;
+module.exports = Validador;
