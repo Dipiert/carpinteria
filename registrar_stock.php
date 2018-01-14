@@ -1,6 +1,6 @@
 <?php
 define('__ROOT__', dirname(dirname(__FILE__))); 
-require_once(__ROOT__ . '/carpinteria/Stock.php'); 
+require_once __ROOT__ . '/carpinteria/Stock.php' ; 
 
 $stock = new Stock();
 $camposValidos = $stock->verificarCampos($stock->getAncho(), $stock->getAlto(), $stock->getTipo());

@@ -25,7 +25,7 @@ class Stock {
 
 	function conectarDB() {
 		global $servername, $username, $password, $dbname;
-		require('db_config.php');	
+		require 'db_config.php' ;	
 		$this->dbcon = mysqli_connect($servername, $username, $password)or die("Ocurrió un error al intentar conectar a la DB");
 		mysqli_select_db($this->dbcon, $dbname)or die("Ocurrió un error al intentar seleccionar la DB");
 	}
