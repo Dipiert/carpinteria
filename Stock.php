@@ -2,17 +2,16 @@
 
 class Stock {
 	protected $ancho;
-	private $alto;
-	private $tipo;
-	private $maximo;
-	private $dbcon;
+	protected $alto;
+	protected $tipo;
+	protected $maximo;
+	protected $dbcon;
 
 	function __construct() {
-		$this->ancho = $_POST['ancho']? $_POST['ancho'] : 0;
-		/* = $_POST['ancho'] || 0;
-		$this->alto = $_POST['alto'] || 0;
-		$this->tipo =  $_POST['tipo'] || 'Otro...';
-		$this->maximo = 9999;*/
+		$this->ancho = $_POST['ancho']? $_POST['ancho'] : 0;	
+		$this->alto = $_POST['alto']? $_POST['alto'] : 0;
+		$this->tipo =  $_POST['tipo']? $_POST['tipo'] : 'Otro...';
+		$this->maximo = 9999;
 	}
 
 	function verificarCampos($ancho, $alto, $tipo) {

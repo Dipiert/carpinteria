@@ -1,16 +1,36 @@
 <?php
 
 require "Stock.php";
+use PHPUnit\Framework\TestCase;
 
-class StockTest extends PHPUnit_Framework_TestCase
+class StockTest extends TestCase
 {
-    private $stock;    
+    
+    private $stock;
 
-    public function testNoMatches()
-    {     
-        $stock = new Stock();
-        echo $stock;
-        //$this->assertEquals([], detectAnagrams('diaper', ['hello', 'world', 'zombies', 'pants']));
+    protected function setUp()
+    {
+        error_reporting(~E_NOTICE);
+        $this->stock = new Stock();
     }
     
+    public function testCamposValidos()
+    {     
+        $this->assertEquals(true, $this->stock->verificarCampos(1,2,1));
+    }
+    
+    public function testAnchoDemasiadoGrande()
+    {     
+        $this->assertEquals(false, $this->stock->verificarCampos(10000,2,1));   
+    }
+
+    public function testAnchoNoNumerico()
+    {     
+        
+    }
+
+    public function testTipoVacio()
+    {     
+        
+    }
 }
