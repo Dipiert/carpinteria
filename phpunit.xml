@@ -1,0 +1,17 @@
+<phpunit convertNoticesToExceptions="false"
+		 colors="true">
+
+ <testsuites>
+    <testsuite name="Unit">
+        <directory suffix="_test.php">./test/</directory>
+    </testsuite>
+</testsuites>
+
+<filter>
+  <whitelist processUncoveredFilesFromWhitelist="false">
+    <directory suffix=".php">/var/www/html/carpinteria</directory>
+    <file>Stock_test</file>    
+  </whitelist>
+</filter>
+
+</phpunit>
