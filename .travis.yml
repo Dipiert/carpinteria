@@ -5,4 +5,4 @@ php:
 
 script: phpunit -c phpunit.xml --coverage-clover=coverage.xml
 
-after-success: bash <(curl -s https://codecov.io/bash)
+after-success: bash <(curl -s https://codecov.io/bash) -t secret:Ja2Zgdn0cPagIW/R41f6KLZjT2wIxmmeHiyPJlFRgyYvWHXgiEUkzG7UHOGzBW0xAbkGJQmsRYL+ewZou++psAjDWUjvYurWf+I4cKPLTC0=
