@@ -1,8 +1,5 @@
 <?php
 
-//
-//
-
 require "Stock.php";
 use PHPUnit\Framework\TestCase;
 
