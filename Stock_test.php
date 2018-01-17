@@ -1,5 +1,5 @@
 <?php
-
+// trying codecov
 require "Stock.php";
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +10,7 @@ class StockTest extends TestCase
 
     protected function setUp()
     {
-        error_reporting(~E_NOTICE);
+        //error_reporting(~E_NOTICE);
         $this->stock = new Stock();
     }
     
