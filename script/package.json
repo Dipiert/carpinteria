@@ -1,12 +1,11 @@
 {
-  "name": "xecmascript",
+  "name": "carpinteria",
   "version": "0.0.0",
-  "description": "Exercism exercises in ECMAScript 6.",
-  "author": "Katrina Owen",
-  "private": true,
+  "description": "Gestor simple de inventario",
+  "author": "Damian Rotta",
   "repository": {
     "type": "git",
-    "url": "https://github.com/exercism/xecmascript"
+    "url": "https://github.com/Dipiert/carpinteria"
   },
   "devDependencies": {
     "babel-jest": "^21.2.0",
@@ -67,5 +66,7 @@
   "licenses": [
     "MIT"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "morgan": "^1.9.0"
+  }
 }
