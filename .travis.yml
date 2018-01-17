@@ -3,4 +3,4 @@ language: php
 php:
   - 7.0
 
-script: phpunit -c phpunit.xml --coverage-html .
+script: phpunit -c phpunit.xml
