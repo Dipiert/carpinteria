@@ -1,5 +1,5 @@
 <?php
-// trying codecov
+
 require "Stock.php";
 use PHPUnit\Framework\TestCase;
 
