@@ -3,6 +3,6 @@ language: php
 php:
   - 7.0
 
-script: phpunit -c phpunit.xml --coverage-clover=coverage.xml
-
-after-success: bash <(curl -s https://codecov.io/bash)
+script: 
+  - phpunit -c phpunit.xml --coverage-clover=coverage.xml
+  - bash <(curl -s https://codecov.io/bash)
