@@ -11,7 +11,7 @@ class StockTest extends TestCase
     protected function setUp()
     {
         error_reporting(~E_NOTICE);
-        $this->stock = new Stock();
+        $this->stock = new Stock(1, 1, 'Otro...', 9999);
     }
     
     public function testLosCamposDebenSerValidos()
@@ -82,6 +82,41 @@ class StockTest extends TestCase
     public function testTipoDeberiaSerNoVacio() 
     {
         $this->assertEquals(true, $this->stock->verificarCampos(1, 2, 'Otro...'));   
+    }
+
+    public function testGetters() 
+    {
+        $this->assertNotNull($this->stock->getAncho());
+        $this->assertNotNull($this->stock->getAlto());
+        $this->assertNotNull($this->stock->getTipo());
+    }
+
+    public function testDeberíaConectarseALaDB()
+    {
+        $this->stock->conectarDB();
+        $this->assertNotNull($this->stock->getDBCon());
+        $this->assertEquals(true, $this->stock->seleccionarDB());
+    }
+
+    public function testDeberiaAlmacenarNuevoStock()
+    {
+        $this->assertEquals(true, $this->stock->almacenar($this->stock));        
+    }
+
+    public function testDeberiaTratarElFormRegistroStock() {
+        $exception = null;
+        $exception = $this->stock->validarPost();
+        $this->assertEquals(null, $exception);   
+    }
+
+    public function testNoDeberiaAlmacenarStocksErroneos() {
+        $stock = new Stock(0,0,'Otro..',0);
+        try {
+            $stock->validarPost();
+        }
+        catch(RuntimeException $e) {
+            $this->assertTrue(true);
+        }
     }
 
 }
