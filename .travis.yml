@@ -10,9 +10,8 @@ script:
 services:
   - mysql
 
-  before_install:
+before_install:
   - mysql -e 'CREATE DATABASE carpinteria;' -u travis
-
   - mysql -e 'USE carpinteria;
               CREATE TABLE `stock` (
               `id` smallint(6) NOT NULL,
