@@ -7,7 +7,7 @@ coverage:
   round: up
   range: "20...100"
 
-  status:
+status:
     project: yes
     patch: yes
     changes: no
@@ -15,4 +15,12 @@ coverage:
 comment:
   layout: "reach, diff, flags, files, footer"
   behavior: default
-require_changes: no
+  require_changes: no
+
+parsers:
+  gcov:
+    branch_detection:
+      conditional: yes
+      loop: yes
+      method: no
+      macro: no

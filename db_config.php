@@ -1,8 +1,8 @@
 <?php
 
 $servername = "localhost";
-$username = "carpinteria";
-$password = "carpinteria";
+$username = "travis";
+$password = "";
 $dbname = "carpinteria";
 
 ?>
