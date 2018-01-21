@@ -6,3 +6,22 @@ php:
 script: 
   - phpunit -c phpunit.xml --coverage-clover=coverage.xml
   - bash <(curl -s https://codecov.io/bash)
+
+services:
+  - mysql
+
+  before_install:
+  - mysql -e 'CREATE DATABASE carpinteria;' -u carpinteria -pcarpinteria
+
+  - mysql -e 'USE carpinteria;
+              CREATE TABLE `stock` (
+              `id` smallint(6) NOT NULL,
+              `alto` decimal(4,0) NOT NULL,
+              `ancho` decimal(4,0) NOT NULL,
+              `tipo` varchar(30) NOT NULL,
+              `fecha_carga` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+              ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+              ALTER TABLE `stock`
+              ADD PRIMARY KEY (`id`);
+              ALTER TABLE `stock`
+              MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;' -u carpinteria -pcarpinteria
