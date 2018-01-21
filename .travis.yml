@@ -11,7 +11,7 @@ services:
   - mysql
 
   before_install:
-  - mysql -e 'CREATE DATABASE carpinteria;' -u carpinteria -pcarpinteria
+  - mysql -e 'CREATE DATABASE carpinteria;' -u travis
 
   - mysql -e 'USE carpinteria;
               CREATE TABLE `stock` (
@@ -24,4 +24,4 @@ services:
               ALTER TABLE `stock`
               ADD PRIMARY KEY (`id`);
               ALTER TABLE `stock`
-              MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;' -u carpinteria -pcarpinteria
+              MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;' -u travis
