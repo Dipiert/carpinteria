@@ -6,6 +6,7 @@ php:
 script: 
   - phpunit -c phpunit.xml --coverage-clover=coverage.xml
   - bash <(curl -s https://codecov.io/bash)
+  - cd ./script && npm run test
 
 services:
   - mysql
