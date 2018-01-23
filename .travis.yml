@@ -7,7 +7,7 @@ script:
   - phpunit -c phpunit.xml --coverage-clover=coverage.xml
   - bash <(curl -s https://codecov.io/bash)
   - npm install jest
-  - cd ./script && npm run test
+  - cd ./script && ./node_modules/jest/bin/jest.js ./test/
 
 services:
   - mysql
