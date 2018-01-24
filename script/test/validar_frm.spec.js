@@ -27,7 +27,7 @@ describe('Testing Validador', () => {
   test('Verifica campo no vacio', () => {
     const campoNoVacio = 'a';
     expect(validador.esVacio(campoNoVacio)).toBeFalsy();
-  });  
+  });
 
   test('Verifica valor mayor al permitido', () => {
     expect(validador.mayorAlPermitido(validador.maximo + 1)).toBeTruthy();
@@ -44,5 +44,4 @@ describe('Testing Validador', () => {
   test('Verifica que un campo no contiene caracteres no numericos', () => {
     expect(validador.contieneNoNumeros('3')).toBeFalsy();
   });
-
 });

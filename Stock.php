@@ -15,9 +15,9 @@ class Stock {
     protected $dbcon;
 
     function __construct($ancho, $alto, $tipo, $maximo) {
-        $this->ancho = $_POST['ancho']? $_POST['ancho'] : $ancho;   
-        $this->alto = $_POST['alto']? $_POST['alto'] : $alto;
-        $this->tipo =  $_POST['tipo']? $_POST['tipo'] : $tipo;//'Otro...';
+        $this->ancho = array_key_exists('ancho', $_POST)? $_POST['ancho'] : $ancho;   
+        $this->alto = array_key_exists('alto', $_POST)? $_POST['alto'] : $alto;
+        $this->tipo =  array_key_exists('tipo', $_POST)? $_POST['tipo'] : $tipo;
         $this->maximo = $maximo;
     }
 
@@ -28,9 +28,9 @@ class Stock {
         );
         if ($camposValidos) {
             if ($this->almacenar($this)){
-                echo 'Se ha agregado nuevo stock exitosamente.';    
+                echo PHP_EOL . 'Se ha agregado nuevo stock exitosamente.' . PHP_EOL;    
             } else {
-                echo 'Ha ocurrido un error al insertar un nuevo Stock';
+                echo PHP_EOL . 'Ha ocurrido un error al insertar un nuevo Stock' . PHP_EOL;
             }
         } else {
             throw new RuntimeException("Los Datos ingresados no son validos");
@@ -46,7 +46,7 @@ class Stock {
     }
 
     function conectarDB() {
-        global $servername, $username, $password;// $dbname;
+        global $servername, $username, $password;
         require 'db_config.php';    
         $this->dbcon = mysqli_connect($servername, $username, $password);
     }

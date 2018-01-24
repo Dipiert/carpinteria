@@ -32,11 +32,11 @@ Validador.prototype.contieneNoNumeros = function (campo) {
 
 Validador.prototype.sonCamposValidos = function () {
   let sonValidos = true;
-  const map = new Map([
+  const medidas = new Map([
      ['Ancho', window.document.getElementById('in_ancho').value],
      ['Alto', window.document.getElementById('in_alto').value],
   ]);
-  map.forEach((value, key) => {
+  medidas.forEach((value, key) => {
     if (this.esVacio(value)) {
       alert(this.alertEsVacio(key));
       sonValidos = false;
@@ -48,6 +48,20 @@ Validador.prototype.sonCamposValidos = function () {
       sonValidos = false;
     }
   });
+
+  const codigo = window.getElementById('in_codigo').value;
+  const es_manual = window.getElementById('is_manual').checked;
+  if (es_manual && this.esVacio(codigo)) {
+    alert(this.alertEsVacio('código'));
+    sonValidos = false;
+  } else if (this.contieneNoNumeros(codigo)) {
+    alert(this.alertCaracteresInvalidos('código'));
+    sonValidos = false;
+  } else if (this.mayorAlPermitido(codigo, 999999)) {
+      alert(this.alertMayorAlPermitido('in_codigo', 999999));
+      sonValidos = false;
+  }
+  
   return sonValidos;
 };
 

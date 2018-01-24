@@ -1,17 +1,17 @@
 <phpunit convertNoticesToExceptions="false"
-		 colors="true">
+	colors="true">
 
- <testsuites>
-    <testsuite name="Unit">
-        <directory suffix="_test.php">./test/</directory>
-    </testsuite>
-</testsuites>
+	<testsuites>
+		<testsuite name="Unit">
+			<directory suffix="_test.php">./test/</directory>
+		</testsuite>
+	</testsuites>
 
-<filter>
-  <whitelist processUncoveredFilesFromWhitelist="false">
-    <directory suffix=".php">/var/www/html/carpinteria</directory>
-    <file>Stock_test</file>    
-  </whitelist>
-</filter>
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="false">
+			<directory suffix=".php">/var/www/html/carpinteria</directory>
+			<file>Stock</file>    
+		</whitelist>
+	</filter>
 
 </phpunit>

@@ -10,7 +10,6 @@ class StockTest extends TestCase
 
     protected function setUp()
     {
-        error_reporting(~E_NOTICE);
         $this->stock = new Stock(1, 1, 'Otro...', 9999);
     }
     
