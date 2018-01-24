@@ -4,7 +4,7 @@ function Validador(maximaMedida) {
   this.maximo = maximaMedida;
 }
 
-const validador = new Validador(99999);
+const validador = new Validador(9999);
 
 Validador.prototype.alertEsVacio = function (campo) {
   return (`El valor de ${campo} no puede estar vacío`);
@@ -14,16 +14,16 @@ Validador.prototype.alertCaracteresInvalidos = function (campo) {
   return (`${campo} contiene caracteres inválidos`);
 };
 
-Validador.prototype.alertMayorAlPermitido = function (campo, maximo) {
-  return (`El valor de ${campo} no puede ser mayor a ${maximo}`);
+Validador.prototype.alertMayorAlPermitido = function (campo) {
+  return (`El valor de ${campo} no puede ser mayor a ${this.maximo}`);
 };
 
 Validador.prototype.esVacio = function (campo) {
   return campo === null || campo.length === 0;
 };
 
-Validador.prototype.mayorAlPermitido = function (campo, maximo) {
-  return campo > maximo;
+Validador.prototype.mayorAlPermitido = function (campo) {
+  return campo > this.maximo;
 };
 
 Validador.prototype.contieneNoNumeros = function (campo) {
@@ -44,7 +44,8 @@ Validador.prototype.sonCamposValidos = function () {
       alert(this.alertCaracteresInvalidos(key));
       sonValidos = false;
     } else if (this.mayorAlPermitido(value, validador.maximo)) {
-      alert(this.alertMayorAlPermitido(key, this.maximo));
+      console.log(`validador.maximo es ${validador.maximo}`);
+      alert(this.alertMayorAlPermitido(key, validador.maximo));
       sonValidos = false;
     }
   });
@@ -57,8 +58,8 @@ Validador.prototype.sonCamposValidos = function () {
   } else if (this.contieneNoNumeros(codigo)) {
     alert(this.alertCaracteresInvalidos('Código'));
     sonValidos = false;
-  } else if (this.mayorAlPermitido(codigo, 999999)) {
-      alert(this.alertMayorAlPermitido('Código', 999999));
+  } else if (this.mayorAlPermitido(codigo, validador.maximo)) {
+      alert(this.alertMayorAlPermitido('Código', validador.maximo));
       sonValidos = false;
   }
   
