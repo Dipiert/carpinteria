@@ -8,7 +8,7 @@ script:
   - bash <(curl -s https://codecov.io/bash)
   - cd script
   - npm install jest  
-  - ls
+  - ./node_modules/jest/bin/jest.js ./test/
 
 services:
   - mysql
