@@ -6,8 +6,8 @@ php:
 script: 
   - phpunit -c phpunit.xml --coverage-clover=coverage.xml
   - bash <(curl -s https://codecov.io/bash)
-  - npm install jest
   - cd script
+  - npm install jest  
   - ls
 
 services:
