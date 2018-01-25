@@ -1,6 +1,6 @@
 <?php
 
-$stock = new Stock(null, null, 'Otro...', 9999);
+$stock = new Stock(null, null, null, 'Otro...', 9999);
 try {
     $stock->validarPost();  
 } catch (RuntimeException $e) {
@@ -8,13 +8,15 @@ try {
 }
 
 class Stock {
+    protected $codigo;
     protected $ancho;
     protected $alto;
     protected $tipo;
     protected $maximo;
     protected $dbcon;
 
-    function __construct($ancho, $alto, $tipo, $maximo) {
+    function __construct($codigo, $ancho, $alto, $tipo, $maximo) {
+        $this->codigo = array_key_exists('ancho', $_POST)? $_POST['codigo'] : null;
         $this->ancho = array_key_exists('ancho', $_POST)? $_POST['ancho'] : $ancho;   
         $this->alto = array_key_exists('alto', $_POST)? $_POST['alto'] : $alto;
         $this->tipo =  array_key_exists('tipo', $_POST)? $_POST['tipo'] : $tipo;
@@ -22,10 +24,7 @@ class Stock {
     }
 
     function validarPost() {
-        $camposValidos = $this->verificarCampos($this->getAncho(),
-            $this->getAlto(),
-            $this->getTipo()
-        );
+        $camposValidos = $this->verificarCampos();
         if ($camposValidos) {
             if ($this->almacenar($this)){
                 echo PHP_EOL . 'Se ha agregado nuevo stock exitosamente.' . PHP_EOL;    
@@ -37,11 +36,14 @@ class Stock {
         }
     }
 
-    function verificarCampos($ancho, $alto, $tipo) {
-        return ($this->verificarMedida($ancho) && $this->verificarMedida($alto) && $tipo);
+    function verificarCampos() {
+        return ($this->verificarMedida($this->ancho) && $this->verificarMedida($this->alto) && $this->tipo);
+        //return ($this->verificarMedida($ancho) && $this->verificarMedida($alto) && $tipo);
     } 
 
     function verificarMedida($medida) {
+        //fwrite(STDERR, print_r("maximo es $this->maximo", TRUE));
+        //fwrite(STDERR, print_r("medida es $medida", TRUE));
         return (is_numeric($medida) && $medida > 0 && $medida < $this->maximo);
     }
 
@@ -81,6 +83,7 @@ class Stock {
     function getDBCon() {
         return $this->dbcon;
     }
+
 }
 
 ?>
