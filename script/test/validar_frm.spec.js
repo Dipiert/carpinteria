@@ -41,7 +41,15 @@ describe('Testing Validador', () => {
     expect(validador.contieneNoNumeros('a')).toBeTruthy();
   });
 
-  test('Verifica que un campo no contiene caracteres no numericos', () => {
+  test('Verifica que un campo que no contiene caracteres no numericos', () => {
     expect(validador.contieneNoNumeros('3')).toBeFalsy();
+  });
+
+  test('Verifica que si un código está en un rango válido, sea aceptado', () => {
+    expect(validador.esCodigoValido('3')).toBeTruthy();
+  });
+
+  test('Verifica que si un código no está en un rango válido, sea rechazado', () => {
+    expect(validador.esCodigoValido('-3')).toBeFalsy();
   });
 });

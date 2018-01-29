@@ -1,0 +1,47 @@
+#btn_registrar {
+    width:160px;
+}
+
+.campo {  
+  display: inline-block;
+  width: 200px;
+  text-align: right;
+  margin-left: 40%;
+  margin-right: 50%;
+}
+
+.in_ancho {
+    width: 40px;
+}
+
+.in_alto {
+    width: 40px;
+}
+
+.in_codigo {
+    width: 50px;
+}
+
+.botones {
+    width: 190px;
+    margin-left:50%;
+    margin-right:50%;
+    margin-top: 1%;
+    position: relative;   
+    background-color: Gray;
+    font-family: Verdana;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 3%;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+.botones:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
