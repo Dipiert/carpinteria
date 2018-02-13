@@ -9,7 +9,7 @@
 
 	<filter>
 		<whitelist processUncoveredFilesFromWhitelist="false">
-			<directory suffix=".php">/var/www/html/carpinteria</directory>
+			<directory suffix=".php">.</directory>
 			<file>Stock</file>    
 		</whitelist>
 	</filter>
