@@ -4,7 +4,9 @@ php:
   - 7.0
 
 script: 
-  - phpunit -c phpunit.xml --coverage-clover=coverage.xml
+  - wget -O phpunit https://phar.phpunit.de/phpunit-6.5.5.phar
+  - chmod +x phpunit
+  - ./phpunit -c phpunit.xml --coverage-clover=coverage.xml
   - bash <(curl -s https://codecov.io/bash)
   - cd script
   - npm install jest  
